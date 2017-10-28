@@ -1,0 +1,9 @@
+(define (prime? n)
+  (define (test-loop trial)
+    (cond ((> trial up-limit) #t)
+	  ((= (remainder n trial) 0) #f)
+	  (else 
+	   (test-loop (+ trial 1)))))
+
+  (let ((up-limit (sqrt n)))
+    (test-loop 2)))

@@ -1,0 +1,13 @@
+; though this procedure takes account of number base (as 2nd input argument)
+; it would not work properly except for decimal base (base-10)
+; to get different base work, algebraic operations used have to adjust
+; according to the base input, i.e. generic operators
+
+(define (palindrome? num base)
+  (define (reverse-num n result)
+    (if (= n 0)
+	result
+	(reverse-num (quotient n base)
+		     (+ (remainder n base) (* result base)))))
+
+  (= num (reverse-num num 0)))
